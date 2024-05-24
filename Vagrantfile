@@ -73,7 +73,7 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell", inline: <<-SHELL
     sudo apt-get update
     sudo apt-get upgrade -y
-    sudo apt-get install -y ufw openjdk-11-jdk install tomcat9
+    sudo apt-get install -y ufw openjdk-11-jdk install tomcat9 
     sudo ufw allow 8080
     sudo groupadd tomcat9
     sudo useradd -s /bin/false -g tomcat9 -d /etc/tomcat9 tomcat9
