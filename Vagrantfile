@@ -73,12 +73,12 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell", inline: <<-SHELL
     sudo apt-get update
     sudo apt-get upgrade -y
-    sudo apt-get install -y ufw openjdk-11-jdk install tomcat9 
-    sudo ufw allow 8080
+    sudo apt-get install -y ufw openjdk-11-jdk tomcat9 tomcat9-admin tomcat9-2 tomcat9-example tomcat9-user
+    sudo ufw allow 8080 
     sudo groupadd tomcat9
     sudo useradd -s /bin/false -g tomcat9 -d /etc/tomcat9 tomcat9
-    sudo cp /vagrant/tomcat-users.xml /etc/tomcat9/tomcat-users.xml
-    sudo cp /vagrant/context.xml /usr/share/tomcat9-admin/host-manager/META-INF/context.xml
-    sudo systemctl restart ufw openjdk-11-jdk install tomcat9
+    sudo cp -v -r /vagrant/tomcat-users.xml /etc/tomcat9/tomcat-users.xml
+    sudo cp -v -r /vagrant/context.xml /usr/share/tomcat9-admin/host-manager/META-INF/context.xml
+    sudo systemctl restart ufw openjdk-11-jdk install tomcat9 tomcat9-admin tomcat9-2 tomcat9-example tomcat9-user
   SHELL
 end
