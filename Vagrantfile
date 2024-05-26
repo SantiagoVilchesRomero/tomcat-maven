@@ -79,7 +79,10 @@ Vagrant.configure("2") do |config|
     sudo useradd -s /bin/false -g tomcat9 -d /etc/tomcat9 tomcat9
     sudo cp -v -r /vagrant/tomcat-users.xml /etc/tomcat9/tomcat-users.xml
     sudo cp -v -r /vagrant/context.xml /usr/share/tomcat9-admin/host-manager/META-INF/context.xml
-    sudo -v cp /vagrant/settings.xml /etc/maven/settings.xml
+    sudo cp -v /vagrant/settings.xml /etc/maven/settings.xml
+    sudo cp -v /vagrant/pom.xml tomcat-war-deployment/pom.xml 
+    sudo cp -v -r /vagrant/rock-paper-scissors ~
+    sudo chown -R vagrant:vagrant /home/vagrant/rock-paper-scissors
     sudo systemctl restart ufw 
     sudo systemctl restart tomcat9
   SHELL
